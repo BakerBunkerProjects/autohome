@@ -36,9 +36,9 @@ jobs:
     - name: Execute Python script
       run: python merge.py ./autohome/data
       
-    - name: Upload CSV artifacts
-      uses: actions/upload-artifact@v4
+    - name: Create Release and Upload CSV files
+      uses: softprops/action-gh-release@v1
       with:
-        name: csv-files
-        path: merged2.csv
-        if-no-files-found: error
+        files: merged2.csv
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
