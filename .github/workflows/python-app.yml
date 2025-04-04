@@ -45,3 +45,4 @@ jobs:
         artifacts: "*.csv"
         tag: ${{ env.NOW }}
         token: ${{ secrets.GITHUB_TOKEN }}
+        allowUpdates: true
