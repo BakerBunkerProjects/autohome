@@ -9,9 +9,6 @@ on:
     # * is a special character in YAML so you have to quote this string
     - cron:  '0 0 1,15 1-12 *'
 
-permissions:
-  contents: read
-
 jobs:
   run-script:
     runs-on: ubuntu-latest
