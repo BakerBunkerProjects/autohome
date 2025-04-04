@@ -38,18 +38,12 @@ jobs:
     - name: Execute Python script
       run: python merge.py ./autohome/data
 
-    - name: Generate date-based tag
-      id: date-tag
-      run: |
-        CURRENT_DATE=$(date +'%Y-%m-%d')
-        echo "::set-output name=tag::$CURRENT_DATE"
-        
-    - name: Create and push tag
-      run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git tag ${{ steps.date-tag.outputs.tag }}
-        git push origin ${{ steps.date-tag.outputs.tag }}
+    - name: Generate release tag
+      id: generate_release_tag
+      uses: alexvingg/next-release-tag@v1.0.3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        tag_prefix: ''
       
     - name: Create Release and Upload CSV files
       uses: softprops/action-gh-release@v1
