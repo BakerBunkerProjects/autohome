@@ -19,6 +19,8 @@ jobs:
     steps:
     - name: Checkout current repository
       uses: actions/checkout@v4
+      with:
+        persist-credentials: true
       
     - name: Clone autohome repository
       run: git clone https://github.com/swoiow/autohome.git
