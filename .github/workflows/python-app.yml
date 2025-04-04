@@ -36,10 +36,12 @@ jobs:
         pip install -r requirements.txt
         
     - name: Execute Python script
-      run: python merge.py ./autohome/data
+      run: |
+        python merge.py ./autohome/data
+        python sale.py
 
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "merged2.csv"
+        artifacts: "*.csv"
         tag: ${{ env.NOW }}
         token: ${{ secrets.GITHUB_TOKEN }}
