@@ -25,6 +25,9 @@ jobs:
     - name: Clone autohome repository
       run: git clone https://github.com/swoiow/autohome.git
       
+    - name: set env
+      run: echo "NOW=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
+      
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
